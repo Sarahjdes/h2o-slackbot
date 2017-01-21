@@ -12,3 +12,30 @@ var controller = Botkit.slackbot({
 controller.spawn({
     token : process.env.token
 }).startRTM();
+
+controller.hears(['salut','allo','hey','yo'],['direct_message'],function(bot,message) {
+    bot.reply(message,{
+        attachments:[
+            {
+                title: 'Salut! As-tu bu de l\'eau aujourd\'hui?',
+                callback_id: '123',
+                attachment_type: 'default',
+                actions: [
+                    {
+                        "name": "yes",
+                        "text": "Oui",
+                        "value": "yes",
+                        "type": "button"
+                    },
+                    {
+                        "name": "no",
+                        "text": "Non",
+                        "value": "no",
+                        "type": "button"
+                    }
+                    
+                ]
+            }
+        ]
+    })
+});
