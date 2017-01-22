@@ -14,6 +14,10 @@ controller.spawn({
     token : process.env.token
 }).startRTM()
 
+controller.on('user_typing',function(bot,message) {
+      bot.reply(message, 'You\'re typing!');
+});
+
 controller.hears(['salut','allo','hey','yo'],['direct_message'],function(bot,message) {
     bot.reply(message,{
         attachments:[
