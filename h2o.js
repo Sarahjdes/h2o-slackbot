@@ -12,7 +12,11 @@ var controller = Botkit.slackbot({
 
 controller.spawn({
     token : process.env.token
-}).startRTM()
+}).startRTM(function(err,bot,payload) {
+    if (err) {
+        throw new Error('Could not connect to slack');
+    }
+});
 
 controller.on('user_typing',function(bot,message) {
       bot.reply(message, 'You\'re typing!');
