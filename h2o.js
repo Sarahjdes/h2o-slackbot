@@ -7,11 +7,12 @@ if (!process.env.token) {
 
 var controller = Botkit.slackbot({
     debug: true,
+    require_delivery:true
 });
 
 controller.spawn({
     token : process.env.token
-}).startRTM();
+}).startRTM()
 
 controller.hears(['salut','allo','hey','yo'],['direct_message'],function(bot,message) {
     bot.reply(message,{
