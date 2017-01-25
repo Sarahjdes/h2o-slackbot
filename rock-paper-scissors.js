@@ -23,5 +23,28 @@ controller.on('user_typing',function(bot,message) {
 });
 
 controller.hears(['hey','hi','hello','yo'],['direct_message'],function(bot,message) {
-    bot.reply(message, 'Hey! Do you want to play a game? (Please say rock paper scissors, that\'s the only one I know!')
+    bot.reply(message, 'Hey! Do you want to play a game? (Please say rock paper scissors, that\'s the only one I know!');
+    bot.reply(message, {
+        attachments: [
+            {
+                title: 'Which game would you like to play?',
+                callback_id: '123',
+                attachment_type: 'default',
+                actions: [
+                {
+                    'name': 'rock-paper-scissors',
+                    'text': 'Rock paper scissors',
+                    'value': 'rock-paper-scissors',
+                    'type': 'button',
+                },{
+                    'name': 'call-of-duty',
+                    'text': 'Call of Duty',
+                    'value': 'call-of-duty',
+                    'type': 'button',
+                }
+                
+                ]
+            }
+        ]
+    })
 });
