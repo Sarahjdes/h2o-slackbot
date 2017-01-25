@@ -48,3 +48,7 @@ controller.hears(['salut','allo','hey','yo'],['direct_message'],function(bot,mes
         ]
     })
 });
+
+controller.hears(['où est Ilian'],['direct_message'],function(bot,message) {
+    bot.reply(message, 'D\'hab, il dors pendant le jour et travaille dans son mancave la nuit.')
+});
