@@ -51,6 +51,8 @@ controller.hears(['hey','hi','hello','yo'],['direct_message'],function(bot,messa
 
 controller.hears(['shoot'],['direct_message'],function(bot,message) {
     bot.reply(message,reply_with_rock);
+    bot.reply(message,reply_with_paper);
+    bot.reply(message,reply_with_scissors);
 });
 
 
@@ -67,4 +69,36 @@ var reply_with_rock = {
     }
     ],
     'icon_url': 'https://dl.dropboxusercontent.com/u/62133025/rock.png'
+}
+
+
+var reply_with_paper = {
+    'username': 'RPS Bot',
+    'text': 'bam, paper!',
+    'attachments': [
+    {
+        'fallback': 'this is a fallback',
+        'image_url': 'https://dl.dropboxusercontent.com/u/62133025/paper.png',
+        'title': 'Paper!',
+        'text': 'A substance made from wood pulp, rags, straw, or other fibrous material, usually in thin sheets, used to bear writing or printing, for wrapping things, etc.',
+        'color': '#FF1493'
+    }
+    ],
+    'icon_url': 'https://dl.dropboxusercontent.com/u/62133025/rock.png'
+}
+
+
+var reply_with_scissors = {
+    'username': 'RPS Bot',
+    'text': 'bam, scissors!',
+    'attachments': [
+    {
+        'fallback': 'this is a fallback',
+        'image_url': 'https://dl.dropboxusercontent.com/u/62133025/scissors.png',
+        'title': 'Scissors!',
+        'text': 'A cutting instrument for paper, cloth, etc., consisting of two blades, each having a ring-shaped handle, that are so pivoted together that their sharp edges work one against the other',
+        'color': '#FF1493'
+    }
+    ],
+    'icon_url': 'https://dl.dropboxusercontent.com/u/62133025/scissors.png'
 }
