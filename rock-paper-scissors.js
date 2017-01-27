@@ -104,12 +104,11 @@ var reply_with_scissors = {
 }
 
 controller.hears(['bot_pick'], ['direct_message'], function(bot, message) {
-    if (bot_pick() == 'rock') {
-        console.log('ouistiti!');
-    }
+    var bot_pick = bot_picks_movement()
+    bot.reply(message,bot_pick)
 });
 
-function bot_pick() {
+function bot_picks_movement() {
     var x = Math.floor((Math.random() * 3) + 1);
     if (x == 1) {
         pick = 'rock';
