@@ -48,3 +48,23 @@ controller.hears(['hey','hi','hello','yo'],['direct_message'],function(bot,messa
         ]
     })
 });
+
+controller.hears(['shoot'],['direct_message'],function(bot,message) {
+    bot.reply(message,reply_with_rock);
+});
+
+
+var reply_with_rock = {
+    'username': 'RPS Bot',
+    'text': 'bam, rock!',
+    'attachments': [
+    {
+        'fallback': 'this is a fallback',
+        'image_url': 'https://dl.dropboxusercontent.com/u/62133025/rock.png',
+        'title': 'Rock!',
+        'text': 'Mineral matter of variable composition, consolidated or unconsolidated, assembled in masses or considerable quantities in nature, as by the action of heat or water.',
+        'color': '#FF1493'
+    }
+    ],
+    'icon_url': 'https://dl.dropboxusercontent.com/u/62133025/rock.png'
+}
