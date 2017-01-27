@@ -102,3 +102,21 @@ var reply_with_scissors = {
     ],
     'icon_url': 'https://dl.dropboxusercontent.com/u/62133025/scissors.png'
 }
+
+controller.hears(['bot_pick'], ['direct_message'], function(bot, message) {
+    if (bot_pick() == 'rock') {
+        console.log('ouistiti!');
+    }
+});
+
+function bot_pick() {
+    var x = Math.floor((Math.random() * 3) + 1);
+    if (x == 1) {
+        pick = 'rock';
+    } else if (x == 2) {
+        pick = 'paper';
+    } else if (x == 3) {
+        pick = 'scissors';
+    }
+    return pick
+}
