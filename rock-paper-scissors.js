@@ -104,8 +104,13 @@ var reply_with_scissors = {
 }
 
 controller.hears(['bot_pick'], ['direct_message'], function(bot, message) {
-    var bot_pick = bot_picks_movement()
-    bot.reply(message,bot_pick)
+    var bot_pick = bot_picks_movement();
+    bot.reply(message,bot_pick);
+});
+
+controller.hears(['bot_outcome'], ['direct_message'], function(bot, message) {
+    var outcome = bot_outcome('paper', 'paper');
+    bot.reply(message,outcome);
 });
 
 function bot_picks_movement() {
@@ -118,4 +123,36 @@ function bot_picks_movement() {
         pick = 'scissors';
     }
     return pick
+}
+
+function bot_outcome(bot_pick, user_pick) {
+    
+    if (bot_pick == user_pick) {
+        console.log('tie!');
+        return 'tie';
+    } else if (bot_pick == 'rock') {
+        if (user_pick == 'scissors') {
+            console.log('I win!');
+            return 'win';
+        } else if (user_pick == 'paper') {
+            console.log('I lose');
+            return 'lose';
+        }
+    } else if (bot_pick == 'paper') {
+        if (user_pick == 'rock') {
+            console.log('I win!');
+            return 'win';
+        } else if (user_pick == 'scissors') {
+            console.log('I lose');
+            return 'lose';
+        }
+    } else if (bot_pick == 'scissors') {
+        if (user_pick == 'paper') {
+            console.log('I win!');
+            return 'win';
+        } else if (user_pick == 'rock') {
+            console.log('I lose');
+            return 'lose';
+        }
+    }
 }
