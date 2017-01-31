@@ -18,9 +18,11 @@ controller.spawn({
     }
 });
 
+/*
 controller.on('user_typing',function(bot,message) {
       bot.reply(message, 'Choose wisely! I\'m trying to read your mind so I can crush you!');
 });
+*/
 
 controller.hears(['hey','hi','hello','yo'],['direct_message'],function(bot,message) {
     bot.reply(message, 'Hey! Do you want to play a game? (Please say rock paper scissors, that\'s the only one I know!');
@@ -54,7 +56,6 @@ controller.hears(['shoot'],['direct_message'],function(bot,message) {
     bot.reply(message,reply_with_paper);
     bot.reply(message,reply_with_scissors);
 });
-
 
 var reply_with_rock = {
     'username': 'RPS Bot',
@@ -156,3 +157,27 @@ function bot_outcome(bot_pick, user_pick) {
         }
     }
 }
+
+controller.hears(['hola'],['direct_message'],function(bot,message) {
+    bot.startConversation(message,function(err,convo) {
+        convo.say('Hey, hello there!');
+        convo.ask('Do you want to play rock, paper, scissors with me?',[
+                {
+                    pattern: 'yes',
+                    callback: function(response,convo) {
+                        convo.say('Great, that is my favourite game!');
+                        convo.next();
+                    }
+                },{
+                    pattern: 'no',
+                    callback: function(response,convo) {
+                        convo.say('Awwww, c\'mon! I\'ll take that as a yes');
+                        convo.next();
+                    }
+                }]);
+        convo.say('Rock...');
+        convo.say('Paper...');
+        convo.say('Scissors...');
+        convo.say('Shoot!');
+    })
+});
